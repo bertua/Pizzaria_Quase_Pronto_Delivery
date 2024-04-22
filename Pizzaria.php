@@ -1,15 +1,15 @@
 <?php
 
+include "Pedido.php";
+include "ItemDoPedido.php";
 include "Pizza.php";
 include "Refrigerante.php";
 include "Batatinha.php";
 include "Cerveja.php";
 include "Faturamento.php";
-include "Avalicao.php";
+include "Avaliacao.php";
 include "Cliente.php";
 include "Endereco.php";
-include "ItemDoPedido.php";
-include "Pedido.php";
 
 
 
