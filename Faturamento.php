@@ -44,5 +44,10 @@ class Faturamento{
     }
 
     public function imprimirRelatorio(){}
-    public function imprimirPedido(){}
+
+    public function imprimirPedido($n){
+        $pedido[$n-1].imprimir($n);
+    }
+    
+    public function imprimirCabecalho(){}
 }

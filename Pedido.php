@@ -30,17 +30,40 @@ class Pedido{
         }
     }
 
+    public function setCliente($cliente) {
+        $this->cliente = $cliente;
+    }
+
     public function getDataHoraPedido() {
         return $this->dataHoraPedido;
     }
 
-    public function setDataHoraPedido($dataHoraPedido) {
-        $this->dataHoraPedido = $dataHoraPedido;
+    public function setDataHoraPedido() {
+        $this->dataHoraPedido = date("d/m/Y H:i:s");
     }
 
     public function addItemDoPedido($itensDoPedido) {
         $this->itemDoPedido[] = $itensDoPedido;
     }
 
-    public function imprimir(){}
+    public function imprimir($n){
+        echo "Pedido nº: $n";
+        echo $this->formatar("Cliente", $this->cliente->nome);
+        echo $this->formatar("Contato", $this->cliente->contato);
+        for($i = 0; $i < count($this->itemDoPedido); $i++){
+            echo $this->formatar("", $this->itemDoPedido[$i].getTipo()." ".$this->itemDoPedido[$i].getSabor()." ".strval($this->itemDoPedido[$i].getValor()))."\n";
+        }
+        echo "----------------------------------------";
+    }
+
+    public function formatar($titulo, $valor) {
+       $divisoria = "----------------------------------------";
+       $finalDiv = strlen($divisoria)-1;
+       $finalValor = strlen($titulo) + strlen($valor)-1;
+       while($finalDiv !== $finalValor && strlen($valor) < strlen($divisoria)){
+        $valor = " " + $valor;
+        $finalValor = strlen($titulo) + strlen($valor)-1;
+       }
+       return $titulo + $valor;
+    }
 }

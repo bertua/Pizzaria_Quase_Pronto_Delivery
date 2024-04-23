@@ -1,15 +1,15 @@
 <?php
 
+include "Faturamento.php";
+include "Cliente.php";
+include "Endereco.php";
 include "Pedido.php";
 include "ItemDoPedido.php";
 include "Pizza.php";
 include "Refrigerante.php";
 include "Batatinha.php";
 include "Cerveja.php";
-include "Faturamento.php";
 include "Avaliacao.php";
-include "Cliente.php";
-include "Endereco.php";
 
 
 
@@ -23,15 +23,15 @@ $refrigerante = new Refrigerante();
 $avaliacao = new Avaliacao();
 */
 
-echo "Bem vindo a pizzaria!";
+echo "Bem vindo a pizzaria!\n";
 
 while(true){
-    $menu = readline(
-        "Selecione:<br>
-        1.Pedido<br>
-        2.Imprimir histórico<br>
-        3.Imprimir pedido<br>
-        #.Sair<br>");
+    echo "Selecione:\n";
+    echo "1.Pedido\n";
+    echo "2.Imprimir histórico\n";
+    echo "3.Imprimir pedido\n";
+    echo "#.Sair\n";
+    $menu = readline();
 
     if($menu === "#"){
         break;
@@ -61,9 +61,11 @@ while(true){
 
         $cliente->setNome(readline("Cliente: "));
         $cliente->setContato(readline("Contato: "));
+        $pedido->setCliente($cliente);
         $endereco->setBairro(readline("Bairro: "));
         $endereco->setRua(readline("Rua: "));
         $endereco->setRua(readline("Cidade: "));
+        $pedido->setDataHoraPedido();
 
         $pedido->setTaxaEntrega($endereco->getBairro());
         $pedido->addTotal($pedido->getTaxaEntrega());
@@ -75,10 +77,13 @@ while(true){
 
     }
     else if($menu === "2"){
-       // $faturamento->imprimirCabecalho();
-        //$faturamento->imprimirRelatorio();
+        $faturamento->imprimirCabecalho();
+        $faturamento->imprimirRelatorio();
     }
     else if($menu === "3"){
-
+        echo "Qual pedido: \n";
+        $pedido = readline();
+        $faturamento->imprimirCabecalho();
+        $faturamento->imprimirPedido($pedido);
     }
 }
