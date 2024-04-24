@@ -7,6 +7,8 @@ class Faturamento{
     private $totalMotoboy = 0;
     private $totalLiquido = 0;
 
+    private $formatar;
+
     public function getQtdPizzas(){
         return $this->qtdPizzas;
     }
@@ -43,11 +45,41 @@ class Faturamento{
         $this->totalLiquido = $this->totalGeral - $this->totalMotoboy;
     }
 
-    public function imprimirRelatorio(){}
+    public function setFormatar($formatar){
+        $this->formatar = $formatar;
+    }
+
+    public function imprimirRelatorio(){
+        echo "----------------------------------------";
+        for($i = 0; $i < count($this->pedido); $i++){
+            $this->pedido[$i]->imprimir($i+1);
+        }
+        echo $this->formatar("Pedidos realizados", strval(count($this->pedido)));
+        echo $this->formatar("Qtd. Pizzas", strval($this->qtdPizzas));
+        echo $this->formatar("Total Geral", strval($this->totalGeral));
+        echo $this->formatar("Total Motoboy", strval($this->totalMotoboy));
+        echo $this->formatar("Total Liquido", strval($this->totalLiquido));
+        echo "----------------------------------------";
+
+    }
 
     public function imprimirPedido($n){
-        $pedido[$n-1].imprimir($n);
+        $this->pedido[$n-1]->imprimir($n);
     }
     
-    public function imprimirCabecalho(){}
+    public function imprimirCabecalho(){
+        echo "----------------------------------------\n";
+        echo "----------------------------------------\n";
+    }
+
+    public function formatar($titulo, $valor) {
+        $divisoria = "----------------------------------------";
+        $finalDiv = strlen($divisoria);
+        $finalValor = strlen($titulo) + strlen($valor);
+        while($finalDiv !== $finalValor && strlen($valor) < strlen($divisoria)){
+         $valor = " " . $valor;
+         $finalValor = strlen($titulo) + strlen($valor);
+        }
+        return $titulo . $valor;
+     }
 }

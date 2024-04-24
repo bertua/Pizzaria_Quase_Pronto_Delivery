@@ -18,4 +18,12 @@ class Cerveja extends ItemDoPedido{
     public function setTipo($tipo) {
         $this->tipo = $tipo;
     }
+
+    public function getValor(){
+        if($this->tipo === "especial"){
+            return 50;
+        } elseif ($this->tipo === "tradicional"){
+            return 40;
+        }
+    }
 }

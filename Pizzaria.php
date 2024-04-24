@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 
 include "Faturamento.php";
 include "Cliente.php";
@@ -38,14 +39,24 @@ while(true){
     }
     else if($menu === "1"){
         $pedido = new Pedido();
-        $cliente = new Cliente();
-        $endereco = new Endereco();
+        $pedido->setDataHoraPedido(time());
 
         while(true){
+            $item = readline("Qual item:\n1.pizza\n2.batata\n3.cerveja\n4.refrigerante\n");
+            switch($item){
+                case "pizza":
+                    $pizza= new Pizza();
+                    $pizza->setSabor(readline("Informe o sabor de pizza: "));
+                    $pizza->setTamanho(readline("Informe o tamanho da pizza: "));
+                    $pizza->setBorda(readline("Informe o sabor da borda: "));
+
+
+                case "batata":
+                case "cerveja":
+                case "refrigerante":
+            }
             $itemDoPedido = new ItemDoPedido();
 
-            $itemDoPedido->setTipo(readline("Informe o tipo de pizza: "));
-            $itemDoPedido->setSabor(readline("Informe o sabor de pizza: "));
 
             $pedido->addItemDoPedido($itemDoPedido);
 
@@ -59,13 +70,17 @@ while(true){
             }
         }
 
+        $cliente = new Cliente();
         $cliente->setNome(readline("Cliente: "));
         $cliente->setContato(readline("Contato: "));
         $pedido->setCliente($cliente);
-        $endereco->setBairro(readline("Bairro: "));
+
+        $endereco = new Endereco();
         $endereco->setRua(readline("Rua: "));
-        $endereco->setRua(readline("Cidade: "));
-        $pedido->setDataHoraPedido();
+        $endereco->setBairro(readline("Bairro: "));
+        $endereco->setCidade(readline("Cidade: "));
+        echo "\n";
+        $pedido->setEndereco($endereco);
 
         $pedido->setTaxaEntrega($endereco->getBairro());
         $pedido->addTotal($pedido->getTaxaEntrega());
@@ -81,9 +96,9 @@ while(true){
         $faturamento->imprimirRelatorio();
     }
     else if($menu === "3"){
-        echo "Qual pedido: \n";
-        $pedido = readline();
+        echo "Qual pedido: ";
+        $p = readline();
         $faturamento->imprimirCabecalho();
-        $faturamento->imprimirPedido($pedido);
+        $faturamento->imprimirPedido($p);
     }
 }

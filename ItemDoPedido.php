@@ -1,5 +1,5 @@
 <?php
-class ItemDoPedido{
+abstract class ItemDoPedido{
     protected $tipo;
     protected $sabor;
     

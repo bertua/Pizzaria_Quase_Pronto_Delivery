@@ -27,4 +27,22 @@ class Pizza extends ItemDoPedido{
     public function setborda($borda){
         $this->borda = $borda;
     }
+
+    if(empty($this->borda)){}
+
+    public function getValor(){
+        if($this->tamanho === "grande"){
+            if(empty($this->borda)){
+                return 50;
+            } else {
+                return 55;
+            }
+        } elseif ($this->tamanho === "media"){
+            if(empty($this->borda)){
+                return 40;
+            } else{
+                return 45;
+            }
+        }
+    }
 }
