@@ -2,6 +2,8 @@
 class Batatinha extends ItemDoPedido {
     protected $tamanho;
 
+    protected $tipo = "batatinha";
+
     public function getTamanho() {
         return $this->tamanho;
     }
@@ -10,12 +12,16 @@ class Batatinha extends ItemDoPedido {
         $this->tamanho = $tamanho;
     }
 
+    public function getTipo() {
+        return $this->tipo;
+    }
+
     public function getValor(){
-        if($this->tamanho === "grande"){
+        if($this->tamanho === "g"){
             return 15;
-        } elseif ($this->tamanho === "medio") {
+        } elseif ($this->tamanho === "m") {
             return 10;
-        } elseif ($this->tamanho === "pequeno") {
+        } elseif ($this->tamanho === "p") {
             return 5;
         }
     }

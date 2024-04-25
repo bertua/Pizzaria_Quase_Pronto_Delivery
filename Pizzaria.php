@@ -32,11 +32,13 @@ while(true){
         $pedido->setDataHoraPedido(time());
 
         while(true){
-            $item = readline("Qual item:\n1.pizza\n2.batata\n3.cerveja\n4.refrigerante\n");
+            echo "Qual item:\n1.pizza\n2.batata\n3.cerveja\n4.refrigerante\n";
+            $item = readline();
             
             switch($item){
-                case "pizza":
+                case "1":
                     $pizza = new Pizza();
+                    $pizza->setTipo(readline("Informe o tipo de pizza: "));
                     $pizza->setSabor(readline("Informe o sabor de pizza: "));
                     $pizza->setTamanho(readline("Informe o tamanho da pizza: "));
                     $pizza->setBorda(readline("Informe o sabor da borda: "));
@@ -45,7 +47,7 @@ while(true){
                     $faturamento->addQtdPizzas();
                     break;
 
-                case "batata":
+                case "2":
                     $batatinha = new Batatinha();
                     $batatinha->setTamanho(readline("Informe o tamanho das batatinhas: "));
                     $pedido->addItemDoPedido($batatinha);
@@ -53,7 +55,7 @@ while(true){
                     $faturamento->addQtdBatatinhas();
                     break;
 
-                case "cerveja":
+                case "3":
                     $cerveja = new Cerveja();
                     $cerveja->setTipo(readline("Qual tipo? "));
                     if($cerveja->getTipo() === "latao"){
@@ -67,7 +69,7 @@ while(true){
                     $faturamento->addQtdCerveja();
                     break;
 
-                case "refrigerante":
+                case "4":
                     $refrigerante = new Refrigerante();
                     $refrigerante->setTamanho(readline("Qual tamanho 600ml ou 2l? "));
                     $refrigerante->setSabor(readline("Qual sabor? "));

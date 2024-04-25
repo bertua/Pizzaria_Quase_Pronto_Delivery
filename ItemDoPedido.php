@@ -1,7 +1,8 @@
 <?php
 abstract class ItemDoPedido{
-    protected $tipo;
-    protected $sabor;
+    protected $tipo = "";
+    protected $sabor = "";
+    protected $borda = "";
     
     public function getTipo(){
         return $this->tipo;
@@ -19,12 +20,7 @@ abstract class ItemDoPedido{
         $this->sabor = $sabor;
     }
 
-    public function getValor(){
-        if($this->tipo === "especial"){
-            return 50;
-        } elseif ($this->tipo === "tradicional"){
-            return 40;
-        }
+    public function getborda(){
+        return $this->borda;
     }
-
 }

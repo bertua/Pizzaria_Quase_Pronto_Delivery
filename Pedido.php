@@ -60,7 +60,7 @@ class Pedido{
         echo $this->formatar("Cidade", $this->endereco->getCidade())."\n";
         echo "----------------------------------------\n";
         for($i = 0; $i < count($this->itemDoPedido); $i++){
-            echo $this->formatar("", $this->itemDoPedido[$i]->getTipo()." ".$this->itemDoPedido[$i]->getSabor()." ".strval($this->itemDoPedido[$i]->getValor()))."\n";
+            echo $this->formatar("", $this->itemDoPedido[$i]->getTipo()." ".$this->itemDoPedido[$i]->getTamanho()." ".$this->itemDoPedido[$i]->getSabor()." ".strval($this->itemDoPedido[$i]->getValor()))."\n";
         }
 
         echo "----------------------------------------\n";

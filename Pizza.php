@@ -29,13 +29,13 @@ class Pizza extends ItemDoPedido{
     }
 
     public function getValor(){
-        if($this->tamanho === "grande"){
+        if($this->tamanho === "g"){
             if(empty($this->borda)){
                 return 50;
             } else {
                 return 55;
             }
-        } elseif ($this->tamanho === "media"){
+        } elseif ($this->tamanho === "m"){
             if(empty($this->borda)){
                 return 40;
             } else {
