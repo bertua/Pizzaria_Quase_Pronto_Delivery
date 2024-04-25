@@ -28,8 +28,6 @@ class Pizza extends ItemDoPedido{
         $this->borda = $borda;
     }
 
-    if(empty($this->borda)){}
-
     public function getValor(){
         if($this->tamanho === "grande"){
             if(empty($this->borda)){
@@ -40,7 +38,7 @@ class Pizza extends ItemDoPedido{
         } elseif ($this->tamanho === "media"){
             if(empty($this->borda)){
                 return 40;
-            } else{
+            } else {
                 return 45;
             }
         }

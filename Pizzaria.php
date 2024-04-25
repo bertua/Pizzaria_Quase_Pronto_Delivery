@@ -12,17 +12,7 @@ include "Batatinha.php";
 include "Cerveja.php";
 include "Avaliacao.php";
 
-
-
 $faturamento = new Faturamento();
-
-/*
-$pizza = new Pizza();
-$batatinha = new Batatinha();
-$cerveja = new Cerveja();
-$refrigerante = new Refrigerante();
-$avaliacao = new Avaliacao();
-*/
 
 echo "Bem vindo a pizzaria!\n";
 
@@ -43,28 +33,50 @@ while(true){
 
         while(true){
             $item = readline("Qual item:\n1.pizza\n2.batata\n3.cerveja\n4.refrigerante\n");
+            
             switch($item){
                 case "pizza":
-                    $pizza= new Pizza();
+                    $pizza = new Pizza();
                     $pizza->setSabor(readline("Informe o sabor de pizza: "));
                     $pizza->setTamanho(readline("Informe o tamanho da pizza: "));
                     $pizza->setBorda(readline("Informe o sabor da borda: "));
-
+                    $pedido->addItemDoPedido($pizza);
+                    $pedido->addTotal($pizza->getValor());
+                    $faturamento->addQtdPizzas();
+                    break;
 
                 case "batata":
+                    $batatinha = new Batatinha();
+                    $batatinha->setTamanho(readline("Informe o tamanho das batatinhas: "));
+                    $pedido->addItemDoPedido($batatinha);
+                    $pedido->addTotal($batatinha->getValor());
+                    $faturamento->addQtdBatatinhas();
+                    break;
+
                 case "cerveja":
+                    $cerveja = new Cerveja();
+                    $cerveja->setTipo(readline("Qual tipo? "));
+                    if($cerveja->getTipo() === "latao"){
+                        $cerveja->setTamanho("473ml");
+                    }
+                    if($cerveja->getTipo() === "garrafa"){
+                        $cerveja->setTamanho(readline("Qual tamanho 330ml ou 1l? "));
+                    }
+                    $pedido->addItemDoPedido($cerveja);
+                    $pedido->addTotal($cerveja->getValor());
+                    $faturamento->addQtdCerveja();
+                    break;
+
                 case "refrigerante":
+                    $refrigerante = new Refrigerante();
+                    $refrigerante->setTamanho(readline("Qual tamanho 600ml ou 2l? "));
+                    $refrigerante->setSabor(readline("Qual sabor? "));
+                    $pedido->addItemDoPedido($refrigerante);
+                    $pedido->addTotal($refrigerante->getvalor());
+                    $faturamento->addQtdRefrigerante();
             }
-            $itemDoPedido = new ItemDoPedido();
 
-
-            $pedido->addItemDoPedido($itemDoPedido);
-
-            $pedido->addTotal($itemDoPedido->getValor());
-
-            $faturamento->addQtdPizzas();
-
-            $continuar = readline("mais alguma coisa?");
+            $continuar = readline("Mais alguma coisa? ");
             if($continuar === ""){
                 break;
             }

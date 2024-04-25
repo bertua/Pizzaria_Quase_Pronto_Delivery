@@ -20,10 +20,14 @@ class Cerveja extends ItemDoPedido{
     }
 
     public function getValor(){
-        if($this->tipo === "especial"){
-            return 50;
-        } elseif ($this->tipo === "tradicional"){
-            return 40;
+        if($this->tipo === "garrafa"){
+            if($this->getTamanho() === "1l"){
+                return 6.50;
+            } else {
+                return 4;
+            }
+        } elseif ($this->tipo === "latao"){
+            return 2.49;
         }
     }
 }

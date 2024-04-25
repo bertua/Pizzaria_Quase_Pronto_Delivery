@@ -2,6 +2,9 @@
 class Faturamento{
     private $data;
     private $qtdPizzas = 0;
+    private $qtdBatatinhas = 0;
+    private $qtdCerveja = 0;
+    private $qtdRefrigerante = 0;
     private $pedido = [];
     private $totalGeral = 0;
     private $totalMotoboy = 0;
@@ -15,6 +18,30 @@ class Faturamento{
 
     public function addQtdPizzas(){
         $this->qtdPizzas++;
+    }
+
+    public function getQtdBatatinhas(){
+        return $this->qtdBatatinhas;
+    }
+
+    public function addQtdBatatinhas(){
+        $this->qtdBatatinhas++;
+    }
+
+    public function getQtdCerveja(){
+        return $this->qtdCerveja;
+    }
+
+    public function addQtdCerveja(){
+        $this->qtdCerveja++;
+    }
+
+    public function getQtdRefrigerante(){
+        return $this->qtdRefrigerante;
+    }
+
+    public function addQtdRefrigerante(){
+        $this->qtdRefrigerante++;
     }
 
     public function addPedido($pedido){

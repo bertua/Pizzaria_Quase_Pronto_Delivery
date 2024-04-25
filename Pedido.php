@@ -62,6 +62,7 @@ class Pedido{
         for($i = 0; $i < count($this->itemDoPedido); $i++){
             echo $this->formatar("", $this->itemDoPedido[$i]->getTipo()." ".$this->itemDoPedido[$i]->getSabor()." ".strval($this->itemDoPedido[$i]->getValor()))."\n";
         }
+
         echo "----------------------------------------\n";
         echo $this->formatar("Tx. Entrega", $this->taxaEntrega)."\n";
         echo $this->formatar("Total", $this->total)."\n";

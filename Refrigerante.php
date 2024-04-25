@@ -18,4 +18,12 @@ class Refrigerante extends ItemDoPedido {
     public function setSabor($sabor){
         $this->sabor = $sabor;
     }
+
+    public function getValor(){
+        if($this->tamanho === "2l"){
+            return 8;
+        } else {
+            return 5;
+        }
+    }
 }
