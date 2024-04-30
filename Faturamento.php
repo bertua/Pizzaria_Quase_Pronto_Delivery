@@ -77,16 +77,19 @@ class Faturamento{
     }
 
     public function imprimirRelatorio(){
-        echo "----------------------------------------";
+        echo "----------------------------------------"."\n";
         for($i = 0; $i < count($this->pedido); $i++){
             $this->pedido[$i]->imprimir($i+1);
         }
-        echo $this->formatar("Pedidos realizados", strval(count($this->pedido)));
-        echo $this->formatar("Qtd. Pizzas", strval($this->qtdPizzas));
-        echo $this->formatar("Total Geral", strval($this->totalGeral));
-        echo $this->formatar("Total Motoboy", strval($this->totalMotoboy));
-        echo $this->formatar("Total Liquido", strval($this->totalLiquido));
-        echo "----------------------------------------";
+        echo $this->formatar("Pedidos realizados", strval(count($this->pedido)))."\n";
+        echo $this->formatar("Qtd. Pizzas", strval($this->qtdPizzas))."\n";
+        echo $this->formatar("Qtd. Batatinhas", strval($this->qtdBatatinhas))."\n";
+        echo $this->formatar("Qtd. Cervejas", strval($this->qtdCerveja))."\n";
+        echo $this->formatar("Qtd. refrigerantes", strval($this->qtdRefrigerante))."\n";
+        echo $this->formatar("Total Geral", strval($this->totalGeral))."\n";
+        echo $this->formatar("Total Motoboy", strval($this->totalMotoboy))."\n";
+        echo $this->formatar("Total Liquido", strval($this->totalLiquido))."\n";
+        echo "----------------------------------------"."\n";
 
     }
 
