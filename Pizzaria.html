@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='style.css' rel='stylesheet'>
+    <title>Pizzaria</title>
+</head>
+<body>
+    <form action="pizzaria.php" method="post">
+        <h1><input type="checkbox" name="itemDoPedido[pizza]" value="true">Pizza</h1>
+        <label for="tpizza">Tamanho</label>
+        <select name="tpizza" id="tpizza">
+
+            <option value="grande">Grande</option>
+            <option value="media">Media</option>
+            <option value="pequena">pequena</option>
+        </select><br>
+
+        <label for="spizza">Sabor</label>
+        <input type="text" name="spizza" id="spizza"><br>
+
+        <input type="radio" id="catupiry" name="borda" value="catupiry">
+        <label for="catupiry">Catupiry</label>
+        <input type="radio" id="cheddar" name="borda" value="cheddar">
+        <label for="cheddar">Cheddar</label>
+        <input type="radio" id="sem borda" name="borda" value="sem borda">
+        <label for="sem borda">Sem borda</label><br>
+
+        <h1><input type="checkbox" name="itemDoPedido[batatinha]" value="true">Batatinha</h1>
+        <label for="tbatatinha">Tamanho</label>
+        <select name="tbatatinha" id="tbatatinha">
+            <option value="grande">Grande</option>
+            <option value="media">Media</option>
+            <option value="pequena">pequena</option>
+        </select><br>
+
+        
+        <h1><input type="checkbox" name="itemDoPedido[cerveja]" value="true">Cerveja</h1>
+        <label for="ctipo">Tipo</label>
+        <select name="ctipo" id="ctipo">
+            <option value="litro">Garrafa</option>
+            <option value="latao">Latão</option>
+        </select><br>
+
+        <label for="ctamanho">Tamanho</label>
+        <input type="text" name="ctamanho" id="ctamanho"><br>
+
+        <h1><input type="checkbox" name="itemDoPedido[refrigerante]" value="true">Refrigerante</h1>
+        <label for="rtamanho">Tamanho</label>
+        <input type="text" name="rtamanho" id="rtamanho"><br>
+
+        <label for="rsabor">Sabor</label>
+        <input type="text" name="rsabor" id="rsabor"><br>
+
+        <h1>Cliente</h1>
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome"><br>
+
+        <label for="contato">Contato</label>
+        <input type="text" name="contato" id="contato"><br>
+
+        <h1>Endereço</h1>
+        <label for="rua">Rua</label>
+        <input type="text" name="rua" id="rua"><br>
+        <label for="bairro">Bairro</label>
+        <input type="text" name="bairro" id="bairro"><br>
+        <label for="cidade">Cidade</label>
+        <input type="text" name="cidade" id="cidade"><br>
+
+
+        <input type="submit" value="enviar">
+    </form>
+</body>
+</html>
